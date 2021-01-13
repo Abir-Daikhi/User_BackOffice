@@ -1,43 +1,334 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mon application ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HERA | BACKOFFICE</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/fonts.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/flaticon.css">
+    <link rel="stylesheet" href="~/assets/css/slicknav.css">
+    <link rel="stylesheet" href="~/assets/css/animate.min.css">
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/assets/css/slick.css">
+    <link rel="stylesheet" href="~/assets/css/nice-select.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!--<link rel="stylesheet" href="css/treeView/bootstrap-treeview.min.css">-->
+    <!--Menu scripts-->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="js/bootstrap-treeview.min.js" defer></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nom d'application", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="fas fa-user-cog"></i>
+                <span>Hera</span>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-fw fa-cogs"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            @*@if (HttpContext.Session.GetString("username") != null)*@
+            @*@if (ViewData["Message"] != null)
+                {*@
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Taxes" asp-action="Index"><span>Taxes</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Categories" asp-action="Index"><span>Categories</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="User" asp-action="Index"><span>User</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Produits" asp-action="Index"><span>Produits</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Devise" asp-action="Index"><span>Devise</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Marque" asp-action="Index"><span>Marque</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Abonnement" asp-action="Index"><span>Abonnement</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Roles" asp-action="Index"><span>Roles</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Clients" asp-action="Index"><span>Clients</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Sites" asp-action="Index"><span>Sites</span></a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Promotion" asp-action="Index"><span>Promotions</span></a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="" asp-controller="Pays" asp-action="Index"><span>Pays</span></a>
+
+            </li>
+
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                    <li>@Html.ActionLink("À propos de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+
+        </ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+
+
+                    <!-- Nav Item - Abonnements -->
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-list-alt "></i>
+                        <span>Abonnements</span>
+                    </a>
+
+                    <!-- Nav Item - Desktop-display -->
+                    <a class="collapse-item" type="button" data-toggle="modal" data-target="#">
+                        <i class="fas fa-fw fa-desktop"></i>
+                    </a>
+
+                    <!-- Nav Item - Mobile-display -->
+                    <a class="collapse-item" type="button" data-toggle="modal" data-target="#">
+                        <i class="fas fa-fw fa-mobile-alt "></i>
+                    </a>
+
+                    <!-- Nav Item - Mobile-display -->
+                    <a class="collapse-item" type="button" data-toggle="modal" data-target="#">
+                        <i class="fas fa-fw fa-eye"></i>
+                    </a>
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">1+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Notifications
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500"></div>
+                                        <span class="font-weight-bold">Nouvelle version HERA est disponible!</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        @using Microsoft.AspNetCore.Http
+                        @inject IHttpContextAccessor HttpContextAccessor
+                        @if (@HttpContextAccessor.HttpContext.Session.GetString("username") != null)
+
+                        {
+                            <li class="nav-item dropdown no-arrow">
+
+                                <a class=" nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-fw fa-user-circle"></i><span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                        @ViewData["Message"]
+
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="LoginUser" asp-action="Logout">Logout</a>
+                            </li>
+
+                        }
+
+                        else
+                        {
+                            <li class="nav-item dropdown no-arrow">
+
+                                <a class="nav-link dropdown-toggle" asp-area="" asp-controller="LoginUser" asp-action="Index">
+                                    <span><i class="fas fa-sign-in-alt"> Login</i></span>
+                                </a>
+
+                            </li>
+
+
+
+
+                        }
+
+
+
+                        <!-- Dropdown - User Information -->
+                        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" type="button" data-toggle="modal" data-target="#AddCategory">Profil</a>
+                                <a class="collapse-item" type="button" data-toggle="modal" data-target="#ModifyCategory">Déconnecter</a>
+                            </div>
+                        </div>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <div class="container-fluid">
+                    <div class="header-area">
+                        <div class="main-header header-sticky">
+                            <div class="container-fluid">
+                                <div class="menu-wrapper">
+                                    <!-- Logo -->
+                                    <div class="logo">
+                                        <a href="#"><img src="" alt=""></a>
+                                    </div>
+                                    <!-- Right Categories Menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li>
+                                                    <a href="#" role="button"><i class="fas fa-fw fa-cog"></i></a>
+                                                    <ul class="submenu">
+                                                        <li><a class="dropdown-item" type="button" data-toggle="modal" data-target="#AddCategory">Ajouter</a></li>
+                                                        <li><a data-menu-id="#" data-menu-title="#" data-menu-parent_id="#" class="dropdown-item" type="button" data-toggle="modal" data-target="#ModifyCategory">Modifier</a></li>
+                                                        <li><a class="dropdown-item" type="button" data-toggle="modal" data-target="#DeleteCategory">Supprimer</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#"><span class="flaticon-heart"></span></a> </li>
+                                                <li><a href="#"><span class="flaticon-shopping-cart"></span></a> </li>
+                                            </ul>
+                                        </nav>
+
+                                    </div>
+                                    <div class="container" ">
+                                        <main role="main" class="pb-3">
+                                            @RenderBody()
+                                        </main>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mon application ASP.NET</p>
-        </footer>
-    </div>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+    <!-- Modal script -->
+    <script src="js/modal.js"></script>
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <center>Copyright &copy; 2020 - Application realisée par - <a href="www.future-eye-inc.com">Future Eye</a></center>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>
