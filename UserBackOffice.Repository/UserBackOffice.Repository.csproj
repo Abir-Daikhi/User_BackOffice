@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>56e65c04-7041-4101-9801-4ffbbf7028d5</ProjectGuid>
+    <ProjectGuid>{56E65C04-7041-4101-9801-4FFBBF7028D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UserBackOffice.Repository</RootNamespace>
@@ -31,24 +31,50 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Entity.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbonnementRepository.cs" />
+    <Compile Include="AdresseRepository.cs" />
+    <Compile Include="CategorieRepository.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="ClientRepository.cs" />
+    <Compile Include="DeviseRepository.cs" />
+    <Compile Include="ImgProduitRepository.cs" />
+    <Compile Include="LivraisonRepository.cs" />
+    <Compile Include="MarqueRepository.cs" />
+    <Compile Include="PaysRepository.cs" />
+    <Compile Include="ProduitRepository.cs" />
+    <Compile Include="PromotionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleRepository.cs" />
+    <Compile Include="TaxeRepository.cs" />
+    <Compile Include="UserRepository.cs" />
+    <Compile Include="ViewMenuRoleStatusUpdateModel.cs" />
+    <Compile Include="VilleRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UserBackOffice.Models\UserBackOffice.Models.csproj">
+      <Project>{09887638-e770-475c-97d6-749d19713f40}</Project>
+      <Name>UserBackOffice.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserBackOffice\UserBackOffice.csproj">
+      <Project>{1e7c931e-ee70-44bb-9173-9f2b8e81de55}</Project>
+      <Name>UserBackOffice</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>
